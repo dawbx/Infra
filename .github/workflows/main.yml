@@ -21,10 +21,10 @@ on:
       
 env:
   NODE_JS: '20.x'
-  TENANTID: ${{ secret.AZURE_TENANT_ID }}
-  SUBSCRIPTIONID: ${{ AZURE_SUBSCRIPTION_ID }}
+  TENANTID: ${{ secrets.AZURE_TENANT_ID }}
+  SUBSCRIPTIONID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
   CLIENTID: ${{ secrets.AZURE_CLIENT_ID }}
-  CLIENT-SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+  CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
   
 jobs:
   build:
