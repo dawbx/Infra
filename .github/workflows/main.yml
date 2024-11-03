@@ -1,0 +1,35 @@
+name: Deploy to azure
+
+on:
+ push:
+   branches: [main, test]
+ workflow_dispatch:
+  inputs:
+    environment:
+      description: 'environment to deploy'
+      required: true
+      default: 'dev'
+      type: choice
+      options:
+      - dev
+      - qa
+      - uat
+    tags:
+      description: 'Test scenario tags'
+      required: false
+      type: boolean
+      
+env:
+  NODE_JS: '20.x'
+  TENANTID: ${{ secret.TENANTID }}
+  SUBSCRIPTIONID: ${{ SUBSCRIPTIONID }}
+  CLIENTID: ${{ secrets.AZURE_CLIENT_ID }}
+  CLIENT-SECRET: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+jobs:
+  build:
+    runs-on: ubuntu:latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4.2.2
+
+    
