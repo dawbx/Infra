@@ -25,11 +25,19 @@ env:
   SUBSCRIPTIONID: ${{ AZURE_SUBSCRIPTION_ID }}
   CLIENTID: ${{ secrets.AZURE_CLIENT_ID }}
   CLIENT-SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+  
 jobs:
   build:
     runs-on: ubuntu:latest
     steps:
     - name: Checkout
       uses: actions/checkout@v4.2.2
-
+      
+    - name: Azure login
+      uses: azure/login@v2
+      with:
+        client-id: ${{ env.CLIENTID }}
+        tenant-id: ${{ env.TENANTID }}
+        subscription-id: ${{ env.SUBSCRIPTIONID }}
+        clientSecret: ${{ env.CLIENT-SECRET }}
     
